@@ -1,13 +1,21 @@
 <template>
-  <Horario />
+  <lista-salas></lista-salas>
 </template>
 
 <script>
-import Horario from "./components/Horario.vue";
+import ListaSalas from "./components/ListaSalas.vue";
+
 export default {
   name: "App",
+
+  methods: {
+    navigate(route) {
+      if (this.progressOverlay) return 0;
+      if (this.$forceUpdate.name != route) this.$router.push({ name: route });
+    },
+  },
   components: {
-    Horario,
+    ListaSalas,
   },
 };
 </script>
