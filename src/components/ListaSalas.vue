@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import axios from "axios"; // Asegúrate de que la ruta es correcta
+import axios from "axios";
 
 export default {
   data() {
@@ -52,6 +52,7 @@ export default {
   },
   methods: {
     async obtenerSalas() {
+      //obtener lista de salas de juntas
       try {
         const respuesta = await axios.get(
           "https://localhost:7238/api/SaladeJuntas"
@@ -63,6 +64,7 @@ export default {
       }
     },
     async hacerReserva() {
+      //reservacion de la sala
       try {
         await axios.post("https://localhost:7238/api/Reservas", this.reserva);
         alert("Reserva exitosa");
@@ -73,9 +75,11 @@ export default {
       }
     },
     reservarSala(salaId) {
+      //asignacion del id de la sala
       this.reserva.SalaDeJuntasId = salaId;
     },
     limpiarFormulario() {
+      //restablece los campos del formulario
       this.reserva.SalaDeJuntasId = null;
       this.reserva.HoraInicio = "";
       this.reserva.HoraFin = "";
